@@ -18,6 +18,9 @@ jobs:
       
       - name: Fetch the latest release of Infrared
         run: wget https://github.com/siroo2137/infrared/raw/refs/heads/master/out/infrared
+        
+      - name: Allow execution of Infrared
+        run: chmod +x infrared
 
       - name: Build the latest Docker image
         run:  docker build . --file Dockerfile --tag siroo2137/infrared-egg:latest
