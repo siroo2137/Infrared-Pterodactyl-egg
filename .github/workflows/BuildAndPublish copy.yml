@@ -17,12 +17,7 @@ jobs:
         run: docker login -u siroo2137 -p ${{ secrets.DOCKER_TOKEN }}
       
       - name: Fetch the latest release of Infrared
-        run: gh release download -R lhridder/infrared -p 'infrared_Linux_x86_64.tar.gz'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Extract the latest release of Infrared
-        run: tar -xvf infrared_Linux_x86_64.tar.gz
+        run: wget https://github.com/siroo2137/infrared/raw/refs/heads/master/out/infrared
 
       - name: Build the latest Docker image
         run:  docker build . --file Dockerfile --tag siroo2137/infrared-egg:latest
