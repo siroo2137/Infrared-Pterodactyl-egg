@@ -5,8 +5,7 @@ cd /home/container
 MODIFIED_STARTUP=$(eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g'))
 # echo "${MODIFIED_STARTUP}"
 
-echo """
-debug: false
+echo """debug: false
 receiveProxyProtocol: false
 useRedisConfigs: false
 underAttack: false
@@ -40,8 +39,7 @@ genericping:
   iconPath: 
 tableflip:
   enabled: false
-  pidfile: infrared.pid
-  """ > config.yml
+  pidfile: infrared.pid""" > config.yml
 
 # check if the folder proxies doesn't exists
 if [ ! -d "/home/container/configs" ]; then
@@ -49,12 +47,10 @@ if [ ! -d "/home/container/configs" ]; then
     mkdir /home/container/configs
 fi
 
-echo """
-{
-    "domainNames": ["localhost"],
-    "proxyTo": "127.0.0.1:25565"
-}
-""" > configs/temp.json
+echo """{
+    \"domainNames\": [\"localhost\"],
+    \"proxyTo\": \"127.0.0.1:25565\"
+}""" > configs/temp.json
 
 # Run the Server
 ${MODIFIED_STARTUP}
